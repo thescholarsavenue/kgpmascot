@@ -91,7 +91,6 @@
                                 <div class="carousel-inner">
                                     <div class="item active">
                                         <img name="canvas" src="images/1.jpg" class="img-responsive" alt="">
-                                        <img style="visibility:hidden" name="canvas2" src="images/1.jpg" class="img-responsive" alt="" >
                                     </div>
                                 </div>
 
@@ -169,19 +168,22 @@ var chantArray= [
 '\"ABE, TEMPO SE!\"',
 ];
 
+
+for (var i = 0; i < imagesArray.length; ++i) {
+     var img = new Image();
+     img.src = imagesArray[i];
+  }
+
 var usedImages = {};
 var usedImagesCount = 0;
-var prenum=0;
 function displayImage(){
 
     var num = Math.floor(Math.random() * (imagesArray.length));
     if (!usedImages[num]){
-        document.canvas.src = imagesArray[prenum];
-				document.getElementById("capt").innerHTML = captionArray[prenum];
-				document.getElementById("tag").innerHTML = tagArray[prenum];
-				document.getElementById("chant").innerHTML = chantArray[prenum];
-        document.canvas2.src = imagesArray[num];
-				prenum=num;
+        document.canvas.src = imagesArray[num];
+				document.getElementById("capt").innerHTML = captionArray[num];
+				document.getElementById("tag").innerHTML = tagArray[num];
+				document.getElementById("chant").innerHTML = chantArray[num];
         usedImages[num] = true;
         usedImagesCount++;
         if (usedImagesCount === imagesArray.length){

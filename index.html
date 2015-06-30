@@ -100,17 +100,24 @@
                     </div>
                     
                     <div class="col-md-3">
-                        <div class="menu-item blue" style="vertical-align:middle">
+                        <div class="menu-item red" style="vertical-align:middle">
                             <a onclick="displayImage();" href="" data-toggle="modal">
                                 <i class="fa fa-random"></i>
                                 <p>Random Mascot</p>
                             </a>
                         </div>
                     </div>
+										<div class="col-md-3">
+                        <div class="menu-item blue" style="vertical-align:middle">
+                            <a onclick="displayImage();" href="" data-toggle="modal">
+                                <p>Leave your ideas for more mascots in the comments, so we could add them to this collection!</p>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-												<h3 id="capt" style="color:white">Batman</h3>   
-                        <h5 id="tag" style="color:white">Batman could be anybody! Even the mascot for KGP!</h5>                       
+												<h3 id="capt"  style="color:white">Batman</h3>
+                        <h5 id="tag" style="color:white">Batman could be anybody! Even the mascot for KGP!</h5>
 												<h5 id="chant" style="color:white">"I'm Batman"</h5>                  
         </div>
         <!-- End Main Body Section -->
@@ -155,11 +162,12 @@ var tagArray = [
 
 var chantArray= [
 '*shrillscream*',
+'\"ABE, TEMPO SE!\"',
 '\"Line lagao line lagao! NON_VEG mai line lagao\"',
 '\"All Time, Masti-Time. "What time is it? MASTI TIME!"\"',
 '\"Jab kuch nahi milega, tab BANANA milega !\"',
 '\"The name itself, in a punjabi accent\"',
-'\"ABE, TEMPO SE!\"',
+
 ];
 
 
@@ -176,8 +184,8 @@ function displayImage(){
     if (!usedImages[num]){
         document.canvas.src = imagesArray[num];
 				document.getElementById("capt").innerHTML = captionArray[num];
-				document.getElementById("tag").innerHTML = tagArray[num];
-				document.getElementById("chant").innerHTML = chantArray[num];
+				document.getElementById("tag").innerHTML = "About : "+tagArray[num];
+				document.getElementById("chant").innerHTML = "Chant : "+chantArray[num];
         usedImages[num] = true;
         usedImagesCount++;
         if (usedImagesCount === imagesArray.length){

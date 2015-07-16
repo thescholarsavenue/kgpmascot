@@ -13,11 +13,12 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+  			<script type='text/javascript' src='js/tabletop1.3.4.js'></script>
+    		<script type='text/javascript' src='js/sheetsee.js'></script>
         <!-- Font Awesome CSS -->
         <link href="css/font-awesome.min.css" rel="stylesheet">
 		
-		<!-- Custom CSS -->
+				<!-- Custom CSS -->
         <link href="css/animate.css" rel="stylesheet">
 
         <!-- Custom CSS -->
@@ -106,10 +107,8 @@
                                 <p>Random Mascot</p>
                             </a>
                         </div>
-                    </div>
-										<div class="col-md-3">
                         <div class="menu-item blue" style="vertical-align:middle">
-                            <a onclick="displayImage();" href="" data-toggle="modal">
+                            <a href="" data-toggle="modal">
                                 <p>Leave your ideas for more mascots in the comments.</p>
                             </a>
                         </div>
@@ -136,56 +135,33 @@
     </body>
 
 		<script language="javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+		var URL = "1FuX7VZHSLCcUpMucGXncEaViRrSwYMPJJK35soe6CTc"
+    Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
+  })
 
-var imagesArray = [
-'https://dl.dropboxusercontent.com/s/tljqr55apkh77e3/Chip%20the%20Gecko.jpg',
-'https://dl.dropboxusercontent.com/s/0gf6vnazmra9dcz/Tempo.jpg',
-];
-
-var captionArray = [
-'Chip the Gecko',
-'Tempo',
-'Mubarak the Murgah',
-'Machau Masti',
-'Banana Babu',
-'Bhan the Maggi',
-];
-
-var tagArray = [
-'Silent, watchful pervert',
-'This mascot can double up as a transport vehicle in case the buses are down for maintainence.',
-'Won\'t work Sunday, Wednesdays and Fridays, and when there is special dinner in the halls.',
-'Just a packet of Amul spiced buttermilk',
-'A Banana',
-'A packet of masala flavored maggi, with an onion for a hat',
-];
-
-var chantArray= [
-'*shrillscream*',
-'\"ABE, TEMPO SE!\"',
-'\"Line lagao line lagao! NON_VEG mai line lagao\"',
-'\"All Time, Masti-Time. "What time is it? MASTI TIME!"\"',
-'\"Jab kuch nahi milega, tab BANANA milega !\"',
-'\"The name itself, in a punjabi accent\"',
-
-];
-
-
-for (var i = 0; i < imagesArray.length; ++i) {
-     var img = new Image();
-     img.src = imagesArray[i];
-  }
 
 var usedImages = {};
 var usedImagesCount = 0;
-function displayImage(){
+data={}
 
-    var num = Math.floor(Math.random() * (imagesArray.length));
+function showInfo(datas) {
+		for (var i = 0; i < datas.length; ++i) {
+     var img = new Image();
+     img.src = datas[i].link;
+  	}
+		document.getElementById("capt").innerHTML = "Howdy";
+		data=datas;
+	
+  }
+
+function displayImage(){
+		var num = Math.floor(Math.random() * (data.length));
     if (!usedImages[num]){
-        document.canvas.src = imagesArray[num];
-				document.getElementById("capt").innerHTML = captionArray[num];
-				document.getElementById("tag").innerHTML = "About : "+tagArray[num];
-				document.getElementById("chant").innerHTML = "Suggest Chant : "+chantArray[num];
+        document.canvas.src = data[num].link;
+				document.getElementById("capt").innerHTML = data[num].mascotname;
+				document.getElementById("tag").innerHTML = "About : "+data[num].description;
+				document.getElementById("chant").innerHTML = "Suggested Chant : "+data[num].chant;
         usedImages[num] = true;
         usedImagesCount++;
         if (usedImagesCount === imagesArray.length){

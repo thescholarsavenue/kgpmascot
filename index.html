@@ -143,21 +143,21 @@
 
 var usedImages = {};
 var usedImagesCount = 0;
-data={}
+var data={}
 
 function showInfo(datas) {
+		data=datas;
 		for (var i = 0; i < datas.length; ++i) {
-     var img = new Image();
-     img.src = datas[i].link;
+			var img = new Image();
+     	img.src = data[i].link;
   	}
 		document.getElementById("capt").innerHTML = "Howdy";
-		data=datas;
-	
   }
 
 function displayImage(){
 		var num = Math.floor(Math.random() * (data.length));
     if (!usedImages[num]){
+        document.canvas.src = "";
         document.canvas.src = data[num].link;
 				document.getElementById("capt").innerHTML = data[num].mascotname;
 				document.getElementById("tag").innerHTML = "About : "+data[num].description;

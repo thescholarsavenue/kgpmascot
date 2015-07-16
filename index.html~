@@ -164,7 +164,7 @@ function displayImage(){
 				document.getElementById("chant").innerHTML = "Suggested Chant : "+data[num].chant;
         usedImages[num] = true;
         usedImagesCount++;
-        if (usedImagesCount === data.length){
+        if (usedImagesCount === imagesArray.length){
             usedImagesCount = 0;
             usedImages = {};
         }
